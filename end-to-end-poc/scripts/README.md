@@ -19,3 +19,6 @@ They are required when configuring libevent and memcached. No need to cross comp
 Building `automake-1.15` is similar to `1.14`, but with all `1.14` strings being replaced to `1.15`
 
 
+## memcached and libevent
+
+libevent is a dependency of memcached. Build libevent first.

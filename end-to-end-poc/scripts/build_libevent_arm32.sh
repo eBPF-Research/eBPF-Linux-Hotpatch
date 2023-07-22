@@ -5,7 +5,8 @@ build_libevent() {
     echo "Building libevent-2.1.5-beta ..."
 
     cd ../libevent-2.1.5-beta
-    ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl --host=arm-linux-gnueabihf
+    make clean
+    CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl --host=arm-linux-gnueabihf --disable-samples --disable-libevent-regress
     make -j8
     make install
 }
