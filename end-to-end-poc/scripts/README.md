@@ -23,6 +23,16 @@ Building `automake-1.15` is similar to `1.14`, but with all `1.14` strings being
 
 libevent is a dependency of memcached. Build libevent first.
 
+## nncurses and vim
+
+ncurses is required by vim. Compile and install it by:
+```bash
+wget https://invisible-island.net/datafiles/release/ncurses.tar.gz
+cd ncurses-6.3/
+./configure --prefix=/usr/local/ncurses-6.3 --host=arm-linux-gnueabihf --without-tests --with-build-cc=gcc --without-progs
+make -j
+make install
+```
 # Notes
 
 ## libevent
