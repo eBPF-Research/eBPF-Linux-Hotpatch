@@ -22,3 +22,9 @@ Building `automake-1.15` is similar to `1.14`, but with all `1.14` strings being
 ## memcached and libevent
 
 libevent is a dependency of memcached. Build libevent first.
+
+# Notes
+
+## libevent
+
+I'v commented out the `evutil_secure_rng_add_bytes` function in evutil_rand.c. This function will call a function removed in the recent version glibc.

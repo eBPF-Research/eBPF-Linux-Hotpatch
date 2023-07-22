@@ -5,9 +5,11 @@ build_openssl() {
     echo "Building openssl-1.1.0b ..."
 
     cd ../openssl-1.1.0b
-    ./configure no-afalgeng --prefix=/usr/local/openssl-1.1.0b --host=arm-linux-gnueabihf
-    make -j8
-    make install
+    make clean
+    ./Configure linux-armv4 --prefix=/usr/local/openssl-1.1.0b --cross-compile-prefix=arm-linux-gnueabihf-
+    make -j
+    make -j depend
+    make -j install
 
     ln -s /usr/local/openssl-1.1.0b/bin/openssl /usr/bin/openssl
 }
