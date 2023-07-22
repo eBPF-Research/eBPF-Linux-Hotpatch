@@ -827,8 +827,8 @@ int evutil_secure_rng_set_urandom_device_file(char *fname);
     @param dat a buffer full of a strong source of random numbers
     @param datlen the number of bytes to read from datlen
  */
-EVENT2_EXPORT_SYMBOL
-void evutil_secure_rng_add_bytes(const char *dat, size_t datlen);
+// EVENT2_EXPORT_SYMBOL
+// void evutil_secure_rng_add_bytes(const char *dat, size_t datlen);
 
 #ifdef __cplusplus
 }
