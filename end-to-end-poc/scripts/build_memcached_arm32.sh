@@ -5,7 +5,7 @@ build_memcached() {
     echo "Building memcached-1.4.32 ..."
 
     cd ../memcached-1.4.32
-    ./configure --prefix=/usr/local/memcached-1.4.32
+    ./configure --prefix=/usr/local/memcached-1.4.32 --host=arm-linux-gnueabihf
     make -j8
     make install 
 
