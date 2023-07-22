@@ -1,0 +1,49 @@
+# 编译生成的文件
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+.libs
+.deps
+
+# 编译器生成的文件和目录
+build/
+bin/
+obj/
+
+# IDE和编辑器生成的文件和目录
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
+
+# 依赖库和包管理器相关的文件和目录
+vendor/
+lib/
+*.lib
+*.a
+*.dll
+*.so
+
+# 编译器和构建工具生成的文件和目录
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles/
+# Makefile
+cmake_install.cmake
+CTestTestfile.cmake
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.bak
+
+# 其他自动生成的文件和目录
+.DS_Store
+Thumbs.db
