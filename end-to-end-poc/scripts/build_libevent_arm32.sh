@@ -6,7 +6,7 @@ build_libevent() {
 
     cd ../libevent-2.1.5-beta
     make clean
-    CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl --host=arm-linux-gnueabihf --disable-samples --disable-libevent-regress
+    CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl --host=arm-linux-gnueabihf
     make -j8
     make install
 }
