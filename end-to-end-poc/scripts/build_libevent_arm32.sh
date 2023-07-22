@@ -1,11 +1,11 @@
 self_path=`readlink -f "${BASH_SOURCE:-$0}"`
 self_dir=`dirname $self_path`
-
+set -e
 build_libevent() {
     echo "Building libevent-2.1.5-beta ..."
 
     cd ../libevent-2.1.5-beta
-    make clean
+    make distclean || true
     CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl --host=arm-linux-gnueabihf
     make -j8
     make install

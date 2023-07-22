@@ -1,0 +1,44 @@
+FROM debian:12
+
+LABEL maintainer="Xijia Che"
+LABEL Description="Image for building and testing CVE-2016-8704"
+
+WORKDIR /build
+
+RUN echo "deb http://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware \
+    deb http://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware \
+    deb http://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware \
+    deb http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware" >> /etc/apt/sources.list
+RUN rm /etc/apt/sources.list.d/*
+
+RUN apt-get update
+RUN apt-get install -y gcc-arm-linux-gnueabihf autoconf make gcc ftp wget
+COPY . /build/
+
+RUN /bin/bash /build/update-perl-image.sh
+RUN cpan install Text::Template
+
+# build and install aclocal
+RUN cd /build/assets && tar -zxvf automake-1.14.tar.gz && \
+    cd automake-1.14 && \
+    ./configure --prefix=/usr/local/automake-1.14 && \
+    make -j install && \
+    ln -s /usr/local/automake-1.14/bin/aclocal-1.14 /usr/bin/aclocal-1.14 && \
+    ln -s /usr/local/automake-1.14/bin/automake-1.14 /usr/bin/automake-1.14 && \
+    rm -rf /build/automake-1.14*
+RUN cd /build/assets && tar -zxvf automake-1.15.tar.gz && \
+    cd automake-1.15 && \
+    ./configure --prefix=/usr/local/automake-1.15 && \
+    make -j install && \
+    ln -s /usr/local/automake-1.15/bin/aclocal-1.15 /usr/bin/aclocal-1.15 && \
+    ln -s /usr/local/automake-1.15/bin/automake-1.15 /usr/bin/automake-1.15 && \
+    rm -rf /build/automake-1.15*
+RUN cd /build/assets && tar -zxvf ncurses.tar.gz && \
+    cd ncurses-6.3/ && \
+    ./configure --prefix=/usr/local/ncurses-6.3 --host=arm-linux-gnueabihf --without-tests --with-build-cc=gcc --without-progs && \
+    make -j && \
+    make install
+RUN /bin/bash /build/scripts/build_libevent_arm32.sh
+RUN /bin/bash /build/scripts/build_openssl_arm32.sh
+RUN /bin/bash /build/scripts/build_redis_arm32.sh
+RUN /bin/bash /build/scripts/build_vim_arm32.sh

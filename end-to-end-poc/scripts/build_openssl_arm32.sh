@@ -1,17 +1,17 @@
 self_path=`readlink -f "${BASH_SOURCE:-$0}"`
 self_dir=`dirname $self_path`
-
+set -e
 build_openssl() {
     echo "Building openssl-1.1.0b ..."
 
     cd ../openssl-1.1.0b
-    make clean
+    make clean || true
     ./Configure linux-armv4 --prefix=/usr/local/openssl-1.1.0b --cross-compile-prefix=arm-linux-gnueabihf-
     make -j
     make -j depend
     make -j install
 
-    ln -s /usr/local/openssl-1.1.0b/bin/openssl /usr/bin/openssl
+    ln -s /usr/local/openssl-1.1.0b/bin/openssl ~/openssl
 }
 
 pushd ${self_dir}

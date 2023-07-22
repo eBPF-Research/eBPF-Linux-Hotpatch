@@ -6,12 +6,12 @@
 
 # Dependencies
 
-## alocal-1.14 and alocal-1.15
+## aclocal-1.14 and aclocal-1.15
 
 They are required when configuring libevent and memcached. No need to cross compile them
 - Download from `ftp://ftp.gnu.org/gnu/automake/automake-1.14.tar.gz`
 - For each archive, extract it with `tar -zxvf automake-1.14.tar.gz`
-- Run `./configure --prefix=/usr/local/automake-1.14` in the extracted folder`
+- Run `./configure --prefix=/usr/local/automake-1.14` in the extracted folder
 - Run `make -j install`
 - `ln -s /usr/local/automake-1.14/bin/aclocal-1.14 /usr/bin/aclocal-1.14`
 - `ln -s /usr/local/automake-1.14/bin/automake-1.14 /usr/bin/automake-1.14`
@@ -28,11 +28,19 @@ libevent is a dependency of memcached. Build libevent first.
 ncurses is required by vim. Compile and install it by:
 ```bash
 wget https://invisible-island.net/datafiles/release/ncurses.tar.gz
+tar -zxvf ncurses.tar.gz
 cd ncurses-6.3/
 ./configure --prefix=/usr/local/ncurses-6.3 --host=arm-linux-gnueabihf --without-tests --with-build-cc=gcc --without-progs
 make -j
 make install
 ```
+
+## openssl
+A perl package named `Text::Template` was required. Install it by 
+```bash
+cpan install Text::Template
+```
+
 # Notes
 
 ## libevent
