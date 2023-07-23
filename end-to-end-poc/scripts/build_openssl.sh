@@ -5,7 +5,7 @@ build_openssl() {
     echo "Building openssl-1.1.0b ..."
 
     cd ../openssl-1.1.0b
-    ./configure no-afalgeng --prefix=/usr/local/openssl-1.1.0b
+    ./Configure no-afalgeng --prefix=/usr/local/openssl-1.1.0b
     make -j8
     make install
 
