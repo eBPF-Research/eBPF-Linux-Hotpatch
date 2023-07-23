@@ -6,6 +6,10 @@ set -e
 # install legacy version automake-1.14 for build libevent
 build_automake_1_14() {
 	mkdir -p ${self_dir}/build
+	if [ -f /usr/bin/aclocal-1.14 ]; then
+		echo "aclocal-1.14 already installed"
+		return
+	fi
 	if [ ! -d ${self_dir}/build/automake-1.14 ]; then
 		cp ${self_dir}/../assets/automake-1.14.tar.gz ${self_dir}/build
 		cd ${self_dir}/build 
