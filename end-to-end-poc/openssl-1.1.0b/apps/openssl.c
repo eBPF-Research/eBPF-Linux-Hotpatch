@@ -109,7 +109,11 @@ static char *make_config_name()
     return p;
 }
 
+#ifdef DO_NOT_USE_ORIG_MAIN
+int orig_main(int argc, char* argv[])
+#else
 int main(int argc, char *argv[])
+#endif
 {
     FUNCTION f, *fp;
     LHASH_OF(FUNCTION) *prog = NULL;
