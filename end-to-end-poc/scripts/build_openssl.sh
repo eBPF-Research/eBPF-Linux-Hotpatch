@@ -1,6 +1,6 @@
 self_path=`readlink -f "${BASH_SOURCE:-$0}"`
 self_dir=`dirname $self_path`
-
+set -e
 build_openssl() {
     echo "Building openssl-1.1.0b ..."
 
@@ -9,7 +9,6 @@ build_openssl() {
     make -j8
     make install
 
-    ln -s /usr/local/openssl-1.1.0b/bin/openssl /usr/bin/openssl
 }
 
 pushd ${self_dir}
