@@ -30,7 +30,7 @@ RUN cd /build/assets && tar -zxvf automake-1.15.tar.gz && \
     ln -s /usr/local/automake-1.15/bin/aclocal-1.15 /usr/bin/aclocal-1.15 && \
     ln -s /usr/local/automake-1.15/bin/automake-1.15 /usr/bin/automake-1.15 && \
     rm -rf /build/automake-1.15*
-RUN apt-get install -y libncurses-dev
+RUN apt-get install -y libncurses-dev libsm-dev libice-dev
 RUN /bin/bash /build/scripts/build_libevent.sh
 RUN /bin/bash /build/scripts/build_openssl.sh
 RUN /bin/bash /build/scripts/build_redis.sh
