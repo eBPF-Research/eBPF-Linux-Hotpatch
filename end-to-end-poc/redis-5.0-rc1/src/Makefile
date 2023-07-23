@@ -30,36 +30,6 @@ INSTALL=install
 
 # Default allocator defaults to Jemalloc if it's not an ARM
 MALLOC=libc
-ifneq ($(uname_M),armv6l)
-ifneq ($(uname_M),armv7l)
-ifeq ($(uname_S),Linux)
-	MALLOC=jemalloc
-endif
-endif
-endif
-
-# To get ARM stack traces if Redis crashes we need a special C flag.
-ifneq (,$(filter aarch64 armv,$(uname_M)))
-        CFLAGS+=-funwind-tables
-endif
-
-# Backwards compatibility for selecting an allocator
-ifeq ($(USE_TCMALLOC),yes)
-	MALLOC=tcmalloc
-endif
-
-ifeq ($(USE_TCMALLOC_MINIMAL),yes)
-	MALLOC=tcmalloc_minimal
-endif
-
-ifeq ($(USE_JEMALLOC),yes)
-	MALLOC=jemalloc
-endif
-
-ifeq ($(USE_JEMALLOC),no)
-	MALLOC=libc
-endif
-
 # Override default settings if possible
 -include .make-settings
 
