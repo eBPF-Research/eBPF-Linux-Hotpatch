@@ -1,0 +1,11 @@
+*.lo
+sample
+test
+include/event2
+*.la
+libtool
+*.pc
+Makefile
+config.h
+evconfig-private.h
+stamp-*

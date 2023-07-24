@@ -47,3 +47,4 @@ CTestTestfile.cmake
 # 其他自动生成的文件和目录
 .DS_Store
 Thumbs.db
+end-to-end-poc/libevent-2.1.5-beta/config.status
