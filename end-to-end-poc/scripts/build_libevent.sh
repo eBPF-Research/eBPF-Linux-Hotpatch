@@ -5,7 +5,14 @@ build_libevent() {
     echo "Building libevent-2.1.5-beta ..."
 
     cd ../libevent-2.1.5-beta
-    CFLAGS='-fomit-frame-pointer -fsanitize=address' ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
+    make clean || true
+    make distclean || true
+    MACHINE_TYPE=`uname -m`
+    if [[ ${MACHINE_TYPE} == 'armv7l' || ${MACHINE_TYPE} == 'armv6l' ]]; then
+        ASAN_OPTIONS=detect_leaks=0 CFLAGS='-fomit-frame-pointer -fsanitize=address -latomic' ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
+    else
+        CFLAGS='-fomit-frame-pointer -fsanitize=address' ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
+    fi 
     make -j8
     make install
 }
