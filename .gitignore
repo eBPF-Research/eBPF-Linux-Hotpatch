@@ -36,6 +36,7 @@ CMakeFiles/
 # Makefile
 cmake_install.cmake
 CTestTestfile.cmake
+autom4te.cache
 
 # 日志文件
 *.log
