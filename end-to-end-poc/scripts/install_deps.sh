@@ -19,6 +19,7 @@ build_automake_1_14() {
 	./configure --prefix=/usr/local/automake-1.14
 	make -j4 install
 	ln -s /usr/local/automake-1.14/bin/aclocal-1.14 /usr/bin/aclocal-1.14
+	ln -s /usr/local/automake-1.14/bin/automake-1.14 /usr/bin/automake-1.14
 }
 
 build_automake_1_14

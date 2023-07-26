@@ -5,8 +5,8 @@ build_libevent() {
     echo "Building libevent-2.1.5-beta ..."
 
     cd ../libevent-2.1.5-beta
-    ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
-    make -j
+    CFLAGS='-fomit-frame-pointer -fsanitize=address' ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
+    make -j8
     make install
 }
 
