@@ -6,7 +6,7 @@ build_redis() {
 
     cd ../redis-5.0-rc1
     make distclean || true
-    make CFLAGS="" LDFLAGS="" MALLOC=libc CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ AR=arm-linux-gnueabihf-ar RANLIB=arm-linux-gnueabihf-ranlib NM=arm-linux-gnueabihf-nm -j8
+    make CFLAGS="" LDFLAGS="" MALLOC=libc CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ AR=arm-linux-gnueabihf-ar RANLIB=arm-linux-gnueabihf-ranlib NM=arm-linux-gnueabihf-nm -j
 }
 
 pushd ${self_dir}

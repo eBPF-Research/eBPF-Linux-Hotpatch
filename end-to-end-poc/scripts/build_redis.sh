@@ -5,7 +5,7 @@ build_redis() {
     echo "Building redis-5.0-rc1 ..."
 
     cd ../redis-5.0-rc1
-    make MALLOC=libc -j8
+    make MALLOC=libc -j
 }
 
 pushd ${self_dir}

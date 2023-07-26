@@ -7,7 +7,7 @@ build_vim() {
     cd ../vim-8.1.1364
     chmod 777 -R .
     ./configure --enable-gui=no
-    make -j8
+    make -j
 }
 
 pushd ${self_dir}

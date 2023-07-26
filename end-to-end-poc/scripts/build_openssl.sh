@@ -8,7 +8,7 @@ build_openssl() {
     cd ../openssl-1.1.0b
     make distclean || true
     ./Configure linux-aarch64 no-afalgeng --prefix=/usr/local/openssl-1.1.0b ${script_args[@]}
-    make -j8
+    make -j
     make install
 
 }

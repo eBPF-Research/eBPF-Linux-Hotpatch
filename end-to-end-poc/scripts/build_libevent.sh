@@ -6,7 +6,7 @@ build_libevent() {
 
     cd ../libevent-2.1.5-beta
     ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
-    make -j8
+    make -j
     make install
 }
 
