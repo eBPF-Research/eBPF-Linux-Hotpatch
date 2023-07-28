@@ -9,8 +9,9 @@ build_libevent() {
     make distclean || true
     MACHINE_TYPE=`uname -m`
     if [[ ${MACHINE_TYPE} == 'armv7l' || ${MACHINE_TYPE} == 'armv6l' ]]; then
-        export ASAN_OPTIONS=detect_leaks=0
-        ASAN_OPTIONS=detect_leaks=0 CFLAGS='-fomit-frame-pointer -fsanitize=address -latomic' ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
+        # export ASAN_OPTIONS=detect_leaks=0
+        # ASAN_OPTIONS=detect_leaks=0 CFLAGS='-fomit-frame-pointer -fsanitize=address -latomic' 
+        ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
     else
         CFLAGS='-fomit-frame-pointer -fsanitize=address' ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
     fi 
