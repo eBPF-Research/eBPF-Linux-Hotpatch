@@ -124,6 +124,7 @@
 #endif
 
 #include <stdio.h>
+#include <assert.h>
 
 #undef MIN
 #define MIN(a,b) ((a)<(b)?(a):(b))
@@ -3152,6 +3153,7 @@ search_make_new(const struct search_state *const state, int n, const char *const
 	const char need_to_append_dot = base_name[base_len - 1] == '.' ? 0 : 1;
 	struct search_domain *dom;
 
+	assert(base_len);
 	printf("search_make_new: %p\n", search_make_new);
 
 	for (dom = state->head; dom; dom = dom->next) {
