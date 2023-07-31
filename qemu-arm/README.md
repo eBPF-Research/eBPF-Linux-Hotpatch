@@ -13,7 +13,7 @@ bash 0-download.sh
 bash 1-run1.sh
 ```
 
-安装过程是否漫长，在qemu 6（ubuntu 22.04 apt自带版本）和8(最新版)上确认过。  
+安装过程是分漫长（2h以上），我们已经在qemu 6（ubuntu 22.04 apt自带版本）和8(最新版)上确认正常。  
 
 安全过程可能会出现上面的博客[1] 中提到的 boot loader 安装失败，最新版不会出现这个问题：   
 ``` text
@@ -33,7 +33,7 @@ bash 1-run1.sh
 
 
 
-不管gurb有没有安装失败，都选择继续安装，在完成安装之后不要重启，而是把Image里面的kernel复制出来。  
+不管gurb有没有安装失败，都选择继续安装，在完成安装之后不要重启，而是把Image里面的kernel复制出来，最终运行qemu需要用Image里面复制出来的Kernel。  
 
 ``` text
 ┌───────────────────┤ [!!] Finish the installation ├────────────────────┐
@@ -47,7 +47,7 @@ bash 1-run1.sh
 │                                                                       │
 └───────────────────────────────────────────────────────────────────────┘
 ```   
-这里需要选择 Go Back，然后在命令行里面选择 Execute Shell，开启sshd，从qemu里面把kernel复制出来：
+这里需要选择 Go Back，然后在命令行里面选择 Execute Shell，开启sshd，从qemu里面把kernel复制出来（这里也可以挂载qemu qcow2来复制）：
 
 ```
 // qemu shell
