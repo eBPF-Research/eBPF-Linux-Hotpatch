@@ -100,7 +100,11 @@ __declspec(dllexport)
 # ifdef MSWIN
 VimMain
 # else
+#ifdef DO_NOT_USE_ORIG_MAIN
+orig_main
+#else
 main
+#endif
 # endif
 (int argc, char **argv)
 {
