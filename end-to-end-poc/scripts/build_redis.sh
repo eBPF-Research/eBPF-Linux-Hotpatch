@@ -15,10 +15,10 @@ build_redis() {
     elif [[ ${MACHINE_TYPE} == 'i686' || ${MACHINE_TYPE} == 'i386' ]]; then
         make MALLOC=libc ${script_args[@]} -j 32bit
     elif [[  ${MACHINE_TYPE} == 'aarch64' ]]; then
-        make MALLOC=libs ${script_args[@]} FINAL_LIBS="-lm -latomic" -j 
+        make MALLOC=libc ${script_args[@]} FINAL_LIBS="-lm -latomic" -j 
     elif [[ ${MACHINE_TYPE} == 'armv7l' || ${MACHINE_TYPE} == 'armv6l' ]]; then
         echo "Extra args: ${script_args[@]}"
-        make MALLOC=libs CFLAGS="-march=native" ${script_args[@]} FINAL_LIBS="-lm -latomic" -j 
+        make MALLOC=libc ${script_args[@]} FINAL_LIBS="-lm -latomic" -j 
     else
         echo "Unknown system type ${MACHINE_TYPE}"
         exit 1
