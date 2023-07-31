@@ -3797,7 +3797,12 @@ int redisIsSupervised(int mode) {
 }
 
 
-int main(int argc, char **argv) {
+#ifdef DO_NOT_USE_ORIG_MAIN
+int orig_main(int argc, char* argv[])
+#else
+int main(int argc, char *argv[])
+#endif
+{
     struct timeval tv;
     int j;
 
