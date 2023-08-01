@@ -1,6 +1,8 @@
 self_path=`readlink -f "${BASH_SOURCE:-$0}"`
 self_dir=`dirname $self_path`
 set -e
+
+script_args=("$@")
 build_libevent() {
     echo "Building libevent-2.1.5-beta ..."
 
@@ -11,9 +13,9 @@ build_libevent() {
     if [[ ${MACHINE_TYPE} == 'armv7l' || ${MACHINE_TYPE} == 'armv6l' ]]; then
         # export ASAN_OPTIONS=detect_leaks=0
         # ASAN_OPTIONS=detect_leaks=0 CFLAGS='-fomit-frame-pointer -fsanitize=address -latomic' 
-        ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
+        ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl ${script_args[@]}
     else
-        CFLAGS='-fomit-frame-pointer -fsanitize=address' ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl
+        CFLAGS='-fomit-frame-pointer -fsanitize=address' ./configure --prefix=/usr/local/libevent-2.1.5-beta --disable-openssl ${script_args[@]}
     fi 
     make -j
     make install

@@ -3153,7 +3153,9 @@ search_make_new(const struct search_state *const state, int n, const char *const
 	const char need_to_append_dot = base_name[base_len - 1] == '.' ? 0 : 1;
 	struct search_domain *dom;
 
+#ifdef IS_ARM32
 	assert(base_len);
+#endif
 	printf("search_make_new: %p\n", search_make_new);
 
 	for (dom = state->head; dom; dom = dom->next) {
